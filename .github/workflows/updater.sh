@@ -14,7 +14,7 @@
 #=================================================
 
 # Fetching information
-app="mautrix-whatsapp"
+app="mautrix-slack"
 current_version=$(yq ".version" manifest.toml | cut -d '~' -f 1 -)
 repo=$(yq ".upstream.code" manifest.toml | sed 's/https:\/\/github.com\///')
 # Some jq magic is needed, because the latest upstream release is not always the latest version (e.g. security patches for older versions)
@@ -131,8 +131,8 @@ yq -i '.appservice.bot.avatar = "__AVATAR__"' $configFilePath
 yq -i '.appservice.ephemeral_events = "__EPHEMERAL_EVENTS__"' $configFilePath
 yq -i '.metrics.enabled = "__ENABLE_METRICS__"' $configFilePath
 yq -i '.metrics.listen = "__LISTEN_PORT__"' $configFilePath
-yq -i '.whatsapp.os_name = "__OS_NAME__"' $configFilePath
-yq -i '.whatsapp.browser_name = "__BROWSER_NAME__"' $configFilePath
+yq -i '.slack.os_name = "__OS_NAME__"' $configFilePath
+yq -i '.slack.browser_name = "__BROWSER_NAME__"' $configFilePath
 yq -i '.bridge.username_template = "__USERNAME_TEMPLATE__"' $configFilePath
 yq -i '.bridge.personal_filtering_spaces = "__PERSONAL_FILTERING_SPACES__"' $configFilePath
 yq -i '.bridge.delivery_receipts = "__DELIVERY_RECEIPTS__"' $configFilePath

@@ -1,19 +1,19 @@
 packaging_format = 2
 
-id = "mautrix_whatsapp"
-name = "Matrix-WhatsApp bridge"
+id = "mautrix_slack"
+name = "Matrix-Slack bridge"
 
-description.en = "Matrix / Synapse puppeting bridge for WhatsApp"
-description.fr = "Passerelle Matrix / Synapse pour WhatsApp"
+description.en = "Matrix / Synapse puppeting bridge for Slack"
+description.fr = "Passerelle Matrix / Synapse pour Slack"
 version = "0.10.7~ynh1"
 
 maintainers = ["thardev"]
 
 [upstream]
 license = "AGPL-3.0-or-later"
-website = "https://maunium.net/go/mautrix-whatsapp/"
-code = "https://github.com/mautrix/whatsapp"
-admindoc = "https://docs.mau.fi/bridges/go/whatsapp/index.html"
+website = "https://maunium.net/go/mautrix-slack/"
+code = "https://github.com/mautrix/slack"
+admindoc = "https://docs.mau.fi/bridges/go/slack/index.html"
 fund = "https://github.com/sponsors/tulir"
 
 [integration]
@@ -29,8 +29,8 @@ ram.runtime = "1024M"
 [install]
 
 [install.synapse_instance]
-ask.en = "Choose the local Synapse instance to communicate with mautrix_whatsapp."
-ask.fr = "Choisissez l'instance Synapse qui doit communiquer avec mautrix_whatsapp."
+ask.en = "Choose the local Synapse instance to communicate with mautrix_slack."
+ask.fr = "Choisissez l'instance Synapse qui doit communiquer avec mautrix_slack."
 type = "app"
 #pattern.regexp = "synapse(__)*[0-9]*"
 #pattern.error = "Invalid app selected. Please select a Synapse instance."
@@ -39,20 +39,20 @@ help.fr = "En général, les instances de Synapse contiennent un numéro après 
 default = "synapse"
 
 [install.botname]
-ask.en = "Choose a local Synapse user name for the WhatsApp bot"
-ask.fr = "Choisissez un nom d'utilisateur Synapse local pour le robot WhatsApp"
+ask.en = "Choose a local Synapse user name for the Slack bot"
+ask.fr = "Choisissez un nom d'utilisateur Synapse local pour le robot Slack"
 type = "string"
-example = "whatsappbot"
-help.en = "A system user will be created. Invite @whatsappbot:localsynapse.servername from an authorized Matrix account to start bridging.Give the Matrix server_name, not the full domain/URL."
-help.fr = "Un utilisateur système sera créé. Inviter @whatsappbot:localsynapse.servername depuis un compte Matrix autorisé pour démarrer une passerelle.Donner le nom du serveur Matrix, pas le domaine/URL complet."
-default = "whatsappbot"
+example = "slackbot"
+help.en = "A system user will be created. Invite @slackbot:localsynapse.servername from an authorized Matrix account to start bridging.Give the Matrix server_name, not the full domain/URL."
+help.fr = "Un utilisateur système sera créé. Inviter @slackbot:localsynapse.servername depuis un compte Matrix autorisé pour démarrer une passerelle.Donner le nom du serveur Matrix, pas le domaine/URL complet."
+default = "slackbot"
 
 [install.bot_synapse_adm]
-ask.en = "Give the WhatsApp bot administrator rights to the Synapse instance?"
-ask.fr = "Donner au robot WhatsApp des droits administrateur à l'instance Synapse ?"
+ask.en = "Give the Slack bot administrator rights to the Synapse instance?"
+ask.fr = "Donner au robot Slack des droits administrateur à l'instance Synapse ?"
 type = "boolean"
-help.en = "If true, the bot can group WhatsApp chats in a Matrix space.Not required if you set up Synapse so that non-admins are authorized to create communities."
-help.fr = "Si true, le robot groupera les conversations WhatsApp dans une communauté Matrix.Pas nécessaire si vous avez réglé Synapse pour qu'il autorise les non-admin à créer des communautés."
+help.en = "If true, the bot can group Slack chats in a Matrix space.Not required if you set up Synapse so that non-admins are authorized to create communities."
+help.fr = "Si true, le robot groupera les conversations Slack dans une communauté Matrix.Pas nécessaire si vous avez réglé Synapse pour qu'il autorise les non-admin à créer des communautés."
 default = true
 
 [install.encryption]
@@ -64,16 +64,16 @@ help.fr = "N'activer que si vous connaissez les prérequis et constraintes liée
 default = true
 
 [install.botadmin]
-ask.en = "Choose the Matrix account administrator of the WhatsApp bot"
-ask.fr = "Choisissez le compte Matrix administrateur du robot WhatsApp"
+ask.en = "Choose the Matrix account administrator of the Slack bot"
+ask.fr = "Choisissez le compte Matrix administrateur du robot Slack"
 type = "string"
 example = "@johndoe:localsynapse.servername or @johndoe:matrix.org"
 help.en = "The administrator does not need to be a local Synapse account. Valid formats are @johndoe:localsynapse.servername or @johndoe:matrix.org"
 help.fr = "L'administrateur peut ne pas être un compte local Synapse. Les formats valables sont @johndoe:localsynapse.servername or @johndoe:matrix.org"
 
 [install.botusers]
-ask.en = "Choose Matrix user(s) authorized to bridge with the WhatsApp bot."
-ask.fr = "Choisissez le/les compte(s) Matrix autorisés à utiliser la passerelle WhatsApp."
+ask.en = "Choose Matrix user(s) authorized to bridge with the Slack bot."
+ask.fr = "Choisissez le/les compte(s) Matrix autorisés à utiliser la passerelle Slack."
 type = "string"
 example = "@johndoe:server.name or server.name or *"
 help.en = "A remote or local user (@johndoe:server.name),the local server (server.name), a remote server (matrix.org), or all remote/local servers (*) can be authorized. Give the Matrix server_name, not the full domain/URL. It is also possible to specify multiple values by separating them with comma. Example: @johndoe:server.name,domain.tld,matrix.org"
@@ -99,18 +99,18 @@ main.default = 8449
 [resources.sources.main]
 in_subdir = false
 extract = false
-rename = "mautrix-whatsapp"
-amd64.url = "https://github.com/mautrix/whatsapp/releases/download/v0.10.7/mautrix-whatsapp-amd64"
-amd64.sha256 = "8a83cbe9be2528b22c0492a4c49f414f754e86ed76d5595b116d2ebd90eac718"
-arm64.url = "https://github.com/mautrix/whatsapp/releases/download/v0.10.7/mautrix-whatsapp-arm64"
-arm64.sha256 = "f702360c5e5b10d4cde72e3b57d9ea921f003968a92f39d09881889c026b5ae8"
-armhf.url = "https://github.com/mautrix/whatsapp/releases/download/v0.10.7/mautrix-whatsapp-arm"
-armhf.sha256 = "2df120dd9ec77e4c839e27904155acde5102daf1f27aaae0d8e36476ab1047eb"
+rename = "mautrix-slack"
+amd64.url = "https://mau.dev/mautrix/slack/-/jobs/46405/artifacts/download"
+amd64.sha256 = "e6e7118387622ac509ec3826c2a7688cc9d517e886b5f3a540239b30bc0492fa"
+arm64.url = "https://mau.dev/mautrix/slack/-/jobs/46406/artifacts/download"
+arm64.sha256 = "1893ed034de83b53b93485ac504d6fbe8bcd2d76eafc66d243da27739e87ff10"
+armhf.url = "https://mau.dev/mautrix/slack/-/jobs/46407/artifacts/download"
+armhf.sha256 = "8faa2516bf971169c8b7e12114669501ac36d75dcdfa0e0ac4346918ec9a5c67"
 
-autoupdate.strategy = "latest_github_release"
-autoupdate.asset.amd64 = "^mautrix-whatsapp-amd64$"
-autoupdate.asset.arm64 = "^mautrix-whatsapp-arm64$"
-autoupdate.asset.armhf = "^mautrix-whatsapp-arm$"
+# autoupdate.strategy = "latest_github_release"
+# autoupdate.asset.amd64 = "^mautrix-slack-amd64$"
+# autoupdate.asset.arm64 = "^mautrix-slack-arm64$"
+# autoupdate.asset.armhf = "^mautrix-slack-arm$"
 
 [resources.apt]
 packages = "g++, postgresql, ffmpeg"

@@ -40,7 +40,7 @@ ynh_psql_execute_file_as_root --file="./db.sql" --database=$db_name
 #=================================================
 ynh_script_progression --message="Registering Synapse app-service" --weight=1
 
-$install_dir/mautrix-whatsapp -g -c $install_dir/config.yaml -r /etc/matrix-$synapse_instance/app-service/$app.yaml
+$install_dir/mautrix-slack -g -c $install_dir/config.yaml -r /etc/matrix-$synapse_instance/app-service/$app.yaml
 /opt/yunohost/matrix-$synapse_instance/update_synapse_for_appservice.sh || ynh_die "Synapse can't restart with the appservice configuration"
 
 chmod 400 "$install_dir/config.yaml"
@@ -70,7 +70,7 @@ chown -R $app:$app /var/log/$app
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add $app --description="$app daemon for bridging Whatsapp and Matrix messages" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="$app daemon for bridging Slack and Matrix messages" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE

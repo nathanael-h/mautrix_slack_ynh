@@ -31,14 +31,14 @@ fi
 
 appserviceid=$app
 async_media="false"
-displayname="WhatsApp bridge bot"
-avatar="mxc://maunium.net/NeXNQarUbrlYBiPCpprYsRqr"
+displayname="Slack bridge bot"
+avatar="mxc://maunium.net/pVtzLmChZejGxLqmXtQjFxem"
 ephemeral_events="true"
 enable_metrics="false"
 listen_port="127.0.0.1:8001"
-os_name="Mautrix-WhatsApp bridge"
+os_name="Mautrix-Slack bridge"
 browser_name="unknown"
-username_template="whatsapp_{{.}}"
+username_template="slack_{{.}}"
 personal_filtering_spaces="false"
 delivery_receipts="false"
 send_presence_on_typing="false"
@@ -107,7 +107,7 @@ set__listadmin
 #=================================================
 ynh_script_progression --message="Registering Synapse app-service" --weight=1
 
-$install_dir/mautrix-whatsapp -g -c $install_dir/config.yaml -r /etc/matrix-$synapse_instance/app-service/$app.yaml
+$install_dir/mautrix-slack -g -c $install_dir/config.yaml -r /etc/matrix-$synapse_instance/app-service/$app.yaml
 /opt/yunohost/matrix-$synapse_instance/update_synapse_for_appservice.sh || ynh_die --message="Synapse can't restart with the appservice configuration"
 
 chown -R $app:$app "$install_dir"
@@ -140,7 +140,7 @@ chown -R $app:$app /var/log/$app
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add $app --description="$app daemon for bridging Whatsapp and Matrix messages" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="$app daemon for bridging Slack and Matrix messages" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
